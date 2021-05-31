@@ -2,7 +2,7 @@ terraform {
   required_version = ">= 0.13"
   required_providers {
     datadog = {
-      source = "datadog/datadog"
+      source  = "datadog/datadog"
       version = ">= 2.25"
     }
   }
@@ -52,7 +52,7 @@ resource "datadog_monitor" "dbforpostgresql_servers_cpu_percent" {
       "customer_name:${var.customer_name}",
       "customer_id:${var.customer_id}",
       "team_in_charge:${var.team_in_charge}",
-      "type:${var.type_dbforpostgresql_servers_cpu_percent}",
+      "type:${var.monitor_type != "" ? var.monitor_type : var.type_dbforpostgresql_servers_cpu_percent}",
       "irp:${var.irp_dbforpostgresql_servers_cpu_percent}",
     ],
     var.extra_tags_dbforpostgresql_servers_cpu_percent,
@@ -104,7 +104,7 @@ resource "datadog_monitor" "dbforpostgresql_servers_io_consumption_percent" {
       "customer_name:${var.customer_name}",
       "customer_id:${var.customer_id}",
       "team_in_charge:${var.team_in_charge}",
-      "type:${var.type_dbforpostgresql_servers_io_consumption_percent}",
+      "type:${var.monitor_type != "" ? var.monitor_type : var.type_dbforpostgresql_servers_io_consumption_percent}",
       "irp:${var.irp_dbforpostgresql_servers_io_consumption_percent}",
     ],
     var.extra_tags_dbforpostgresql_servers_io_consumption_percent,
@@ -155,7 +155,7 @@ resource "datadog_monitor" "dbforpostgresql_servers_memory_percent" {
       "customer_name:${var.customer_name}",
       "customer_id:${var.customer_id}",
       "team_in_charge:${var.team_in_charge}",
-      "type:${var.type_dbforpostgresql_servers_memory_percent}",
+      "type:${var.monitor_type != "" ? var.monitor_type : var.type_dbforpostgresql_servers_memory_percent}",
       "irp:${var.irp_dbforpostgresql_servers_memory_percent}",
     ],
     var.extra_tags_dbforpostgresql_servers_memory_percent,
@@ -206,7 +206,7 @@ resource "datadog_monitor" "dbforpostgresql_servers_storage_percent" {
       "customer_name:${var.customer_name}",
       "customer_id:${var.customer_id}",
       "team_in_charge:${var.team_in_charge}",
-      "type:${var.type_dbforpostgresql_servers_storage_percent}",
+      "type:${var.monitor_type != "" ? var.monitor_type : var.type_dbforpostgresql_servers_storage_percent}",
       "irp:${var.irp_dbforpostgresql_servers_storage_percent}",
     ],
     var.extra_tags_dbforpostgresql_servers_storage_percent,
